@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+<listeners>
+    <listener class-name="utilities.extentReportManager"/>
+</listeners>
+
+
+
+  <test thread-count="5" name="Test">
+    <classes>
+     <class name="tests.testBaseClass"/>
+      <class name="tests.homePageTests"/>
+     <class name="tests.productPageTests"/>
+      <class name="tests.productAddedTests"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

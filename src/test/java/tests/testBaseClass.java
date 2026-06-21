@@ -27,6 +27,7 @@ public class testBaseClass {
 		options.addArguments("--headless=new");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--window-size=1920,1080");
 
 		driver = new ChromeDriver(options);
 		p=new Properties();
@@ -38,7 +39,7 @@ public class testBaseClass {
 		
 		p.load(fil);
 		//driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.get(p.getProperty("URL"));
 		
 	}

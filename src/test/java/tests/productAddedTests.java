@@ -1,8 +1,13 @@
 package tests;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +20,23 @@ public class productAddedTests extends testBaseClass {
 	void  validateAddedProduct() {
 		amazonHomePage homePage = new amazonHomePage(driver);
 		resultsPage result = new resultsPage(driver);
+		
+		try {
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		    WebElement continueShopping = wait.until(
+		        ExpectedConditions.elementToBeClickable(
+		            By.xpath("//button[contains(text(),'Continue shopping')]")
+		        )
+		    );
+
+		    continueShopping.click();
+
+		} catch (Exception e) {
+		    System.out.println("Continue Shopping page not displayed");
+		}
+		
+		
 		homePage.fillSearchBox("Kurta");
 		String parentId = driver.getWindowHandle();
 		homePage.searchItem();

@@ -14,7 +14,7 @@
           <configuration>
             <!-- put your configurations here -->
             <suiteXmlFiles>
-          <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+          <suiteXmlFile>C:/Users/HP/Desktop/myWorkspace/seleniumPracticeWithFramework/testng.xml</suiteXmlFile>
          
         </suiteXmlFiles>
          <groups>${groups}</groups>

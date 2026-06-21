@@ -20,7 +20,7 @@ public class productPage extends pageObjectBase {
 	public boolean productAdded(String str) {
 	//	String text = addedProduct.getText();
 		WebDriverWait myWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		String text =	myWait.until(ExpectedConditions.presenceOfElementLocated((By) addedProduct)).getText();
+		String text =	myWait.until(ExpectedConditions.visibilityOf(addedProduct)).getText();
 		if(text.contains(str)) {
 			return true;
 		}

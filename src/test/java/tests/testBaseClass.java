@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -20,10 +21,23 @@ public class testBaseClass {
 	public static WebDriver driver;
 	@BeforeClass
 	void setUp() throws IOException {
+		
+		ChromeOptions options = new ChromeOptions();
+
+		options.addArguments("--headless=new");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-dev-shm-usage");
+
+		driver = new ChromeDriver(options);
 		p=new Properties();
-		 FileReader fil = new FileReader("C:\\Users\\HP\\Desktop\\myWorkspace\\seleniumPracticeWithFramework\\src\\test\\resources\\config.properties");
+		 
+		FileReader fil = new FileReader(
+				System.getProperty("user.dir")
+				+ "/src/test/resources/config.properties");
+		
+		
 		p.load(fil);
-		driver = new ChromeDriver();
+		//driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(p.getProperty("URL"));
 		
@@ -40,8 +54,10 @@ public class testBaseClass {
 	        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 	        File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
-	        String targetFilePath = System.getProperty("user.dir")
-	                + "\\screenshots\\" + tname + "_" + timeStamp + ".png";
+	        String targetFilePath =
+	        		System.getProperty("user.dir")
+	        		+ "/screenshots/"
+	        		+ tname + "_" + timeStamp + ".png";
 	        
 	     //   String targetFilePath1 = "C://Users//HP//Desktop//myWorkspace//frameWorkDesigning//screenshots";
 
